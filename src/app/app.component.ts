@@ -1,3 +1,4 @@
+import { ParentLayout } from './parent/parent.component';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  ParentLayout = ParentLayout;
 }

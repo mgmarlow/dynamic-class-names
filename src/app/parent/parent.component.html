@@ -1,0 +1,20 @@
+<h3>Change Parent Layout:</h3>
+<select (change)="changeLayout($event)">
+  <option [value]="ParentLayout.Layout01">Layout 1</option>
+  <option [value]="ParentLayout.Layout02">Layout 2</option>
+  <option [value]="ParentLayout.Layout03">Layout 3</option>
+</select>
+
+<!-- Disadvantage: Boilerplate -->
+<app-child-with-resolver
+  [appChildLayoutResolver]="layout">
+</app-child-with-resolver>
+
+<!-- Disadvantage: Awful error reporting (silently fails on typos) -->
+<app-child-basic
+  [ngClass]="{
+    'red': layout === ParentLayout.Layout01,
+    'green': layout === ParentLayout.Layout02,
+    'blue': layout === ParentLayout.Layout03
+  }">
+</app-child-basic>
