@@ -12,16 +12,10 @@ export enum ChildHostBindingLayout {
   templateUrl: './child-with-hostbindings-and-child.component.html'
 })
 export class ChildWithHostbindingsAndChildComponent {
-  @Input() parentLayout: ParentLayout;
-
-  @HostBinding('class.red') get red () { return this.parentLayout === ParentLayout.Layout01; }
-  @HostBinding('class.green') get green () { return this.parentLayout === ParentLayout.Layout02; }
-  @HostBinding('class.blue') get blue () { return this.parentLayout === ParentLayout.Layout03; }
-
-  layout: ChildHostBindingLayout;
-
-  ngOnChanges(changes) {
-    switch (changes.parentLayout.currentValue) {
+  _parentLayout: ParentLayout;
+  @Input() set parentLayout(layout) {
+    this._parentLayout = layout;
+    switch (layout) {
       case ParentLayout.Layout01:
         this.layout  = ChildHostBindingLayout.Red;
         break;
@@ -33,4 +27,10 @@ export class ChildWithHostbindingsAndChildComponent {
         break;
     }
   }
+
+  @HostBinding('class.red') get red () { return this._parentLayout === ParentLayout.Layout01; }
+  @HostBinding('class.green') get green () { return this._parentLayout === ParentLayout.Layout02; }
+  @HostBinding('class.blue') get blue () { return this._parentLayout === ParentLayout.Layout03; }
+
+  layout: ChildHostBindingLayout;
 }
