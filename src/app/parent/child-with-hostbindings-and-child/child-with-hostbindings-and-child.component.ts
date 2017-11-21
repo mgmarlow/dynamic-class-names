@@ -7,23 +7,19 @@ export enum ChildHostBindingLayout {
   Blue
 }
 
-abstract class LayoutInputComponent {
-  layout: any;
-
-  _parentLayout: any;
-  @Input() set parentLayout(parent: any) {
-    this._parentLayout = parent;
-    this.layout = this.getLayoutFromParent(parent);
-  }
-
-  abstract getLayoutFromParent(parent: any): any;
-}
-
 @Component({
   selector: 'app-child-with-hostbindings-and-child',
   templateUrl: './child-with-hostbindings-and-child.component.html'
 })
-export class ChildWithHostbindingsAndChildComponent extends LayoutInputComponent {
+export class ChildWithHostbindingsAndChildComponent {
+  layout: any;
+
+  _parentLayout: any;
+  @Input() set parentLayout(parent: ParentLayout) {
+    this._parentLayout = parent;
+    this.layout = this.getLayoutFromParent(parent);
+  }
+
   @HostBinding('class.red') get red () { return this._parentLayout === ParentLayout.Layout01; }
   @HostBinding('class.green') get green () { return this._parentLayout === ParentLayout.Layout02; }
   @HostBinding('class.blue') get blue () { return this._parentLayout === ParentLayout.Layout03; }
