@@ -13,9 +13,9 @@ export enum ChildHostBindingLayout {
 })
 export class ChildWithHostbindingsAndChildComponent {
   _parentLayout: ParentLayout;
-  @Input() set parentLayout(layout) {
-    this._parentLayout = layout;
-    switch (layout) {
+  @Input() set parentLayout(parent) {
+    this._parentLayout = parent;
+    switch (parent) {
       case ParentLayout.Layout01:
         this.layout  = ChildHostBindingLayout.Red;
         break;
