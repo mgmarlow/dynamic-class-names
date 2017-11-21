@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { ParentComponent } from './parent/parent.component';
 import { ChildWithResolverComponent, ChildLayoutResolverDirective } from './parent/child-with-resolver/child-with-resolver.component';
 import { ChildBasicComponent } from './parent/child-basic/child-basic.component';
+import { ChildWithHostbindingComponent } from './parent/child-with-hostbinding/child-with-hostbinding.component';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { ChildBasicComponent } from './parent/child-basic/child-basic.component'
     ParentComponent,
     ChildWithResolverComponent,
     ChildLayoutResolverDirective,
-    ChildBasicComponent
+    ChildBasicComponent,
+    ChildWithHostbindingComponent
   ],
   imports: [
     BrowserModule

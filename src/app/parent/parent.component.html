@@ -5,11 +5,13 @@
   <option [value]="ParentLayout.Layout03">Layout 3</option>
 </select>
 
+<!-- Advantage: None, as of yet -->
 <!-- Disadvantage: Boilerplate -->
 <app-child-with-resolver
   [appChildLayoutResolver]="layout">
 </app-child-with-resolver>
 
+<!-- Advantage: Simple implementation -->
 <!-- Disadvantage: Awful error reporting (silently fails on typos) -->
 <app-child-basic
   [ngClass]="{
@@ -18,3 +20,9 @@
     'blue': layout === ParentLayout.Layout03
   }">
 </app-child-basic>
+
+<!-- Advantage: Good error reporting, TypeScript intellisense -->
+<!-- Disadvantage: Classnames located in .ts -->
+<app-child-with-hostbinding
+  [parentLayout]="layout"
+></app-child-with-hostbinding>
